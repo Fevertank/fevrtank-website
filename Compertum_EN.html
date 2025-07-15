@@ -159,7 +159,7 @@
       transition: transform 0.3s;
       z-index: 0;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.603);
-      transform: translateX(0%);
+      transform: translateX(100%);
     }
     .lang-toggle span {
       z-index: 1;
@@ -168,7 +168,7 @@
       font-weight: bold;
     }
     .lang-toggle.active .toggle-btn {
-      transform: translateX(100%);
+      transform: translateX(0%);
     }
 
 /* //////網頁開場影片及文字動畫////// */
@@ -583,7 +583,7 @@
                   </li>
                 </ul>
             </li>
-            <a href="Aboutus.html">關於我們</a>
+            <a href="Aboutus.html">About Us</a>
             <a href="Contactus.html">聯絡我們</a>
             <a href="Joinus.html">加入來達</a>
             <a href="Investors.html">投資者關係</a>
@@ -603,7 +603,7 @@
               const currentURL = window.location.href;
               if (currentURL.includes("Compertum_EN.html")) {
                 // 現在是英文 → 切換到中文
-                window.location.href = "Compertum.html";
+                window.location.href = "index.html";
               } else {
                 // 現在是中文或其他 → 切換到英文
                 window.location.href = "Compertum_EN.html";
