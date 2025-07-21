@@ -134,7 +134,6 @@
     .header-item-image:hover .header-hover-image {
       display: block;
     }
-
     .lang-toggle {
       position: relative;
       width: 100px;
@@ -173,43 +172,45 @@
 
 /* //////網頁開場影片及文字動畫////// */
     .video-background {
-      background: #080500;
-      /* position: fixed; */
-      top: 0;
-      left: 0;
-      width: 98vw;
-      height: 80vh;
-      pointer-events: none; /* 不影響點擊 */
-      z-index: -1;
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      z-index: 0;
       overflow: hidden;
     }
-    .video-background iframe {
-      width: 170vh; /* 16:9 比例 */
-      height: 115vh;
+    .background-video {
+      position: absolute;
+      top: -50%;
+      left: 0;
+      width: 100%;
+      height: 220%;
+      opacity: 0.3;
+      z-index: -2;
+    }
+    .video-overlay {
       position: absolute;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0.3;
-      clip-path: inset(0% 0% 30% 0%);/* 裁切 上 右 下 左 百分比或 px */
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
     }
     .video-text {
-      position: relative;
-      z-index: 1;
+      position: relative; 
       text-align: center;
       color: white;
       top: 35%;
-      left: 5%;
     }
     .video-text h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
       opacity: 0;
       transform: translateY(20px);
       animation: videotext 1s ease-out forwards;
     }
     .video-text h2 {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       opacity: 0;
       transform: translateY(20px);
       animation: videotext 1s ease-out forwards;
@@ -224,125 +225,167 @@
 
     /* //////網頁過場簡易介紹1////// */
     .introduce1-text {
-      background-image: linear-gradient(to bottom, #3498db00, #251e01, #3498db00);
+      background-image: linear-gradient(to bottom, #3498db00, #06202b, #3498db00);
       width: 100%;
-      padding: 1em 0em;          /* 內距，控制色塊大小 */
-      display: inline-block;       /* 讓 span 有區塊特性 */
-      border-radius: 0px;          /* 圓角（可選） */
+      padding: 1em 0em;
+      display: inline-block;
+      border-radius: 0px;
       margin-top: 200px;
-      text-align: center; /* 水平置中 */
+      text-align: center;
     }
     .introduce1-text h1 {
-      margin: 0.5rem 0rem;
+      margin: 0rem 0rem;
       font-size: 1.8rem;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      font-weight: 1000; /* 或 200, 100，數字越小越細 */
+      font-weight: 500;
       color: #ffffff;
     }
     .introduce1-text h2 {
       margin: 0rem 0rem;
       font-size: 0.8rem;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      font-weight: 800; /* 或 200, 100，數字越小越細 */
+      font-weight: 100;
       color: #ffffff;
     }
-    .introduce1-text h3 {
-      margin: 0rem 8rem;
-      font-size: 0.8rem;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      font-weight: 800; /* 或 200, 100，數字越小越細 */
-      color: #ffffff;
-    }
-
 
     /* //////網頁開頭產品簡易介紹////// */
-    .slider-container {
-      /* position: relative; */
-      background: #ffffff;
+    .product-image {
       width: 100%;
-      height: 600px;
-      /* margin: 0;
-      padding: 0; */
+      height: 100vh;
       overflow: hidden;
     }
-
+    .slider-container {
+      background-color: #eee;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
     .slider {
       display: flex;
       transition: transform 0.5s ease;
-      width: 100%; /* 3張圖 * 100% */
+      width: 300%;
     }
-    .slider button {
-      /* position: fixed; */
-      margin-top: 600px;
-    }
-
     .slide {
-      /* position: relative; */
-      width: 100%;
+      position: relative;
+      width: 100% / 3;
+      width: 33.3333%;
       flex-shrink: 0;
     }
-
     .slide img {
       width: 100%;
-      height: 70%;
-      object-fit: cover; /* 裁切並填滿 */
-      object-position: top; /* 裁切的焦點 */
+      height: 100vh;
+      object-fit: cover;
+      object-position: top;
+    }
+    .slider-nav {
+      background-color: #ffffff20;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 15vh;
+      width: 100vw;
+    }
+    .slider-nav button {
+      display: flex;
+      justify-content: center;
+      width: 10%;
+      background-color: #ffffff00;
+      color: #989899;
+      border: 2px solid #00000000;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: background-color 0.3s;
+      font-weight: 1000;
+      margin: 0rem 1rem;
+    }
+    .slider-nav button:hover {
+      background-color: #ffffff40;
+    }
+    .slider-progress-indicator {
+      position: absolute;
+      bottom: 13vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+    }
+    .slider-progress-indicator .dot {
+      width: 10%;
+      height: 3px;
+      border-radius: 10px;
+      margin: 0rem 1rem;
+      transition: background-color 0.3s ease;
+    }
+    .slider-progress-indicator .dot.active {
+      background-color: #ca870b;
     }
     .image-overlay-btn1 {
       position: absolute;
       top: 0px;
-      right: 1486px;
+      right: 89vw;
+      width: 10%;
+      height: 100vh;
       background-color: rgba(0, 0, 0, 0);
-      color: white;
+      color: rgba(255, 255, 255, 0.3);
       border: none;
-      padding: 277px 12px;
       cursor: pointer;
-      z-index: 10;
-      font-size: 2rem;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-size: 5rem;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      background-size: 0% 100%;
+      background-repeat: no-repeat;
+      background-position: left;
+      transition: background-size 0.4s ease, background-color 0.3s ease, transform 0.3s ease;
     }
     .image-overlay-btn1:hover {
-      background-color: #ffffff30;
+      background-image: linear-gradient(to left, #ffffff00, #ffffff40);
+      background-size: 100% 100%;
+      color: rgba(255, 255, 255, 0.7);
     }
     .image-overlay-btn2 {
       position: absolute;
-      top: 0px;
-      right: 0px;
+      top: 0;
+      right: 0;
+      width: 10%;
+      height: 100vh;
       background-color: rgba(0, 0, 0, 0);
-      color: white;
+      color: rgba(255, 255, 255, 0.3);
       border: none;
-      padding: 277px 12px;
       cursor: pointer;
-      z-index: 10;
-      font-size: 2rem;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-size: 5rem;
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      background-size: 0% 100%;
+      background-repeat: no-repeat;
+      background-position: right;
+      transition: background-size 0.4s ease, background-color 0.3s ease, transform 0.3s ease;
     }
     .image-overlay-btn2:hover {
-      background-color: #ffffff30;
+      background-image: linear-gradient(to right, #ffffff00, #ffffff40);
+      background-size: 100% 100%;
+      color: rgba(255, 255, 255, 0.7);
     }
-    .T3-text {
-      margin: 0rem 0rem;
-      font-size: 2.5rem;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      font-weight: 600; /* 或 200, 100，數字越小越細 */
+    .slide-text {
+      position: absolute;
+      bottom: 55%;
+      left: 8%;
+    }
+    .slide-text h1 {
+      font-size: 3vw;
+      font-weight: 500;
       color: #ffffff;
+      margin-top: -3vw;
     }
-    .T3-text h1 {
-      margin-top: 80px;
-      margin-left: -600px;
+    .slide-text h2 {
+      font-size: 1.5vw;
+      font-weight: 200;
+      color: #ffffff;
+      margin-top: -3vw;
     }
-    .T3-text h2 {
-      font-size: 1.5rem;
-      margin-top: -60px;
-      margin-left: -600px;
-      font-weight: 300;
-    }
-    .T3-text-btn {
+    .slide-text-btn {
       display: inline-block;
       padding: 10px 20px;
-      margin-top: -60px;
-      margin-left: -600px;
-      background-color: #ffffff22; /* 半透明白色背景 */
+      background-color: #ffffff20;
       color: #fff;
       text-decoration: none;
       border: 1px solid #fff;
@@ -351,147 +394,197 @@
       font-weight: 300;
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .T3-text-btn:hover {
+    .slide-text-btn:hover {
       background-color: #ffffff44;
       transform: scale(1.05);
     }
 
-    /* //////網頁過場簡易介紹1////// */
-    .MEMS-image {
-      position: relative;
-      width: 760px;
-      height: 490px;
-      margin-top: 60px;
-      margin-left: 0px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-    .MEMS-image::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('MEMS.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.5;
-      z-index: -1;
-    }
-   .MEMS-text h1 {
-      margin: 1rem 1rem;
-      font-size: 1.5rem;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      font-weight: 700; /* 或 200, 100，數字越小越細 */
-      color: #ffffff;
-    }
-    .MEMS-text h2 {
-      font-weight: 400;
-      color: #ffffff;
-    }
-    .Lidar-image {
-      position: relative;
-      width: 760px;
-      height: 500px;
-      margin-top: -500px;
-      margin-left: 760px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-    .Lidar-image::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('customer_01.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.5;
-      z-index: -1;
-    }
-   .Lidar-text h1 {
-      margin: 1rem 1rem;
-      font-size: 1.5rem;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      font-weight: 700; /* 或 200, 100，數字越小越細 */
-      color: #ffffff;
-    }
-    .Lidar-text h2 {
-      font-weight: 400;
-      color: #ffffff;
-    }
-
-
     /* //////網頁的Lidar優勢呈現////// */
     .half-layout {
+      background-color: #00252b50;
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      /* height: 100vh; */
+      width: 90%;
+      position: relative;
+      bottom: 0;
+      left: 5%;
+      border-radius: 2vw;
+      margin: 0 0vw 15vh 0;
     }
-
     .half-video {
+      object-fit: cover;
       flex: 1 1 60%;
       box-sizing: border-box;
-      /* padding: 40px; */
+      border-radius: 2vw;
+      overflow: hidden;
     }
-
-    .half-text {
-      flex: 1 1 40%;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: white;
-      background-color: #14140f;
-    }
-
-    .half-text h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .half-text p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .half-text .btn {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-    }
-
     .half-video video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-
-    /* //////網頁的客戶合作成果////// */
-
-
-    .customer-video {
-      width: 50%;
-      height: auto;
-      background-position: center center;
-      background-color: #007bff;
-      border-radius: 18px;
-      text-align: center;
-      overflow: hidden;
-      display: block;
+    .half-text {
+      flex: 1 1 40%;
+      box-sizing: border-box;
+      position: relative;
+      top: 15vh;
     }
+    .half-text h1 {
+      font-size: 2vw;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      color: white;
+      position: absolute;
+      bottom: 75%;
+      left: 5%;
+    }
+    .half-text h2 {
+      font-size: 1vw;
+      font-weight: 200;
+      display: flex;
+      justify-content: left;
+      color: white;
+      width: 80%;
+      position: absolute;
+      bottom: 65%;
+      left: 5%;
+    }
+    .half-text-btn {
+      position: absolute;
+      bottom: 55%;
+      left: 5%;
+      display: flex;
+      justify-content: center;
+      padding: 1vh 1vw;
+      background-color: #ffffff20;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      border-radius: 2vw;
+      font-size: 1vw;
+      font-weight: 300;
+      width: 15%;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .half-text-btn:hover {
+      background-color: #ffffff44;
+      transform: scale(1.05);
+    }
+
+    /* //////網頁的媒體新聞///// */
+    .news-slider-container {
+      background-color: #ffffff00;
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 90%;
+      height: 60vh;
+      margin: 0 auto;
+      z-index: 10;
+      overflow: hidden;
+    }
+    .news-slider-track {
+      position: absolute;
+      left: -0.8vw;
+      width: 95%;
+      display: flex;
+      align-items: center;
+      transition: transform 0.4s ease-in-out;
+    }
+    .news-card {
+      min-width: calc(100% / 3);
+      padding: 1vw;
+    }
+    .news-card-background {
+      position: relative;
+      background-color: #c0bf98;
+      border-radius: 2vh;
+      height: 60vh;
+    }
+    .news-card a {
+      text-decoration: none;
+    }
+    .news-card img {
+      position: absolute;
+      width: 100%;
+      height: 70%;
+      border-radius: 2vh;
+    }
+    .news-card h1 {
+      position: absolute;
+      top: 72%;
+      color: #ffffff;
+      font-size: 1.1vw;
+      padding: 1vw;
+      display: flex;
+      justify-content: center;
+      margin-top: -3%;
+    }
+    .news-card h2 {
+      position: absolute;
+      top: 90%;
+      color: #ffffff;
+      font-size: 1.1vw;
+      padding: 1vw;
+      display: flex;
+      justify-content: left;
+      margin-top: -3%;
+    }
+    .news-slider-controls {
+      position: relative;
+      top: -40vh;
+      width: 100%;
+      height: 20vh;
+      display: flex;
+      justify-content: space-between;
+      font-size: 50vw;
+    }
+    .news-slider-controls button{
+      all: unset;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 5vw;
+      font-weight: 100;
+      color: #ffffff;
+      padding: 1vw;
+      transition: font-size 0.3s ease, transform 0.3s ease;
+    }
+    .news-slider-controls button:hover {
+      font-size: 7vw;
+      color: #888340;
+    }
+    .news-dots-container {
+      position: relative;
+      margin-top: -10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .news-dot {
+      width: 12px;
+      height: 12px;
+      margin: 0 0.5vw;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .news-dot.active {
+      background-color: #808080;
+      width: 15px;
+      height: 15px;
+    }
+
+
+    /* button {
+      padding: 6px 12px;
+      cursor: pointer;
+    } */
+
 
 
 
@@ -570,7 +663,7 @@
                     <div class="header-hover-image">
                       <img src="Fuzion120_small.png" alt="Fuzion120 預覽圖" width="100%">
                       <h1>Fuzion120</h1>
-                      <h2>120度AI智慧感測光達</h2>
+                      <h2>全固態120度AI智慧感測光達</h2>
                     </div>
                   </li>
                   <li class="header-item-image">
@@ -578,7 +671,7 @@
                     <div class="header-hover-image">
                       <img src="SK1_small.png" alt="SK1 預覽圖" width="100%">
                       <h1>SK1</h1>
-                      <h2>全固態輕巧型光達</h2>
+                      <h2>全固態輕小型光達</h2>
                     </div>
                   </li>
                 </ul>
@@ -616,199 +709,296 @@
 
   <!-- //////網頁開場影片及文字動畫////// -->
   <div class="video-background">
-    <iframe
-      src="https://www.youtube.com/embed/aXwKtrVXA50?autoplay=1&mute=1&controls=0&loop=1&playlist=aXwKtrVXA50&modestbranding=1&showinfo=0"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen
-    ></iframe>
+    <video class="background-video" data-aos="fade-up" data-aos-duration="1000" autoplay muted loop playsinline>
+      <source src="Opening_video.mp4" type="video/mp4">
+    </video >
+    <div class="video-overlay"></div>
     <div class="video-text" >
-      <h1>次世代光達解決方案</h1>
-      <h2>融合相機與精密感知的未來視野,與AI完美結合達到智能感測的巔峰</h2>
+      <h1>新世代光達解決方案</h1>
+      <h2>融合相機與精密感知的視野&emsp;與AI完美結合的智能感測</h2>
     </div>
   </div>
 
   <!-- //////網頁過場簡易介紹1////// -->
     <div class="introduce1-text" >
       <h1>開啟智能空間&emsp;定義未來感知</h1>
-      <h2>整合全球領先 LiDAR 技術，開創安全、高效、智能的新紀元</h2>
-      <h3>我們匯聚全球領先的光達技術與AI感知能力，打造一套完整革新的3D感知解決方案。從車輛自動駕駛、智慧城市到工業自動化與空間管理，每一項創新，都來自於對精確感知與智能決策的堅持</h3>
+      <h2>整合全球領先技術，開創安全、高效、智能的光達</h2>
     </div>
 
   <!-- //////網頁開頭產品簡易介紹////// -->
-  <section class="T3-image" data-aos="zoom-in-up" data-aos-duration="600">
+  <section class="product-image" data-aos="zoom-in-up" data-aos-duration="600">
     <div class="slider-container">
       <button class="image-overlay-btn1" onclick="prevSlide()"> ‹ </button>
       <button class="image-overlay-btn2" onclick="nextSlide()"> › </button>
       <div class="slider" id="slider">
-        <div class="slide"><img src="T3_02.png" /></div>
-        
-            <section class="T3-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="100">
-              <h1>T3 LiDar</h1>
-              <h2>120度高解析長距離光達</h2>
+        <div class="slide"><img src="T3_02.png" />
+            <section class="slide-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
+              <h1>T3</h1>
+              <h1>120度高解析長距離光達</h1>
+              <h2>專為自動駕駛的智慧感測系統設計</h2>
               <div class="content">
-                <a href="#more-info" class="T3-text-btn">&nbsp;&nbsp;了解更多&nbsp;&nbsp;</a>
+                <a href="#more-info" class="slide-text-btn">&nbsp;&nbsp;了解更多&nbsp;&nbsp;</a>
               </div>
             </section>
-        <div class="slide"><img src="Fuzion_01.png" /></div>
-        <div class="slide"><img src="SK1_02.png" /></div>
-        
+        </div>
+        <div class="slide"><img src="Fuzion_01.png" />
+            <section class="slide-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
+              <h1>Fuzion120</h1>
+              <h1>全固態120度AI智慧感測光達</h1>
+              <h2>專為機械載物的AI辨識設計</h2>
+              <div class="content">
+                <a href="#more-info" class="slide-text-btn">&nbsp;&nbsp;了解更多&nbsp;&nbsp;</a>
+              </div>
+            </section>
+        </div>
+        <div class="slide"><img src="SK1_02.png" />
+            <section class="slide-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="200">
+              <h1>SK1</h1>
+              <h1>全固態輕小型光達</h1>
+              <h2>專為無人機的智慧感測系統設計</h2>
+              <div class="content">
+                <a href="#more-info" class="slide-text-btn">&nbsp;&nbsp;了解更多&nbsp;&nbsp;</a>
+              </div>
+            </section>
+        </div>
       </div>
+            <button class="image-overlay-btn1" onclick="prevSlide()"> ‹ </button>
+      <button class="image-overlay-btn2" onclick="nextSlide()"> › </button>
+      <div class="slider-nav">
+        <button onclick="goToSlide(0)">T3</button>
+        <button onclick="goToSlide(1)">Fuzion120</button>
+        <button onclick="goToSlide(2)">SK1</button>
+      </div>
+      <div class="slider-progress-indicator" id="slider-progress-indicator"></div>
     </div>
+
     <script>
       let currentIndex = 0;
+      const indicatorContainer = document.getElementById('slider-progress-indicator');
       const slider = document.getElementById('slider');
       const totalSlides = slider.children.length;
+      const progressBar = document.getElementById('progress-bar');
+      const slideElements = Array.from(slider.children).filter(child =>
+        child.classList.contains('slide')
+      );
+      const imageSlideCount = slideElements.length;
 
-      function updateSlider() {
-        const offset = -currentIndex * (6096 / totalSlides); // 每張圖寬度
-        slider.style.transform = `translateX(${offset}px)`;
+      for (let i = 0; i < imageSlideCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === currentIndex) dot.classList.add('active');
+        indicatorContainer.appendChild(dot);
       }
-
+      function updateIndicator() {
+        const dots = document.querySelectorAll('.slider-progress-indicator .dot');
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+      }
+      function updateSlider() {
+        const containerWidth = document.querySelector('.slider-container').offsetWidth;
+        const offset = -currentIndex * containerWidth;
+        slider.style.transform = `translateX(${offset}px)`;
+        updateIndicator();
+      }
       function nextSlide() {
-        if (currentIndex < totalSlides - 2) {
+        if (currentIndex < totalSlides - 1) {
           currentIndex++;
           updateSlider();
         }
       }
-
       function prevSlide() {
         if (currentIndex > 0) {
           currentIndex--;
           updateSlider();
         }
       }
-    </script>
-  </section>
+      function goToSlide(index) {
+        if (index >= 0 && index < totalSlides) {
+          currentIndex = index;
+          updateSlider();
+        }
+      }
 
-  <!-- //////網頁過場簡易介紹2////// -->
-  <section class="MEMS-image" data-aos="zoom-in-right" data-aos-duration="600">
-    <section class="MEMS-text" data-aos="zoom-in-right" data-aos-duration="800">
-      <h1>高可靠性的微機電光學微鏡技術</h1>
-      <h2>&emsp;•&emsp;微機電光學微鏡</h2>
-      <h2>&emsp;•&emsp;光學微鏡驅動控制板</h2>    
-    </section>
-  </section>
-  <section class="Lidar-image" data-aos="zoom-in-left" data-aos-duration="600">
-    <section class="Lidar-text" data-aos="zoom-in-left" data-aos-duration="800">
-      <h1>客製化光達模組</h1>
-      <h2>&emsp;•&emsp;MEMS、閃光型及旋轉鏡型的LiDAR模組</h2>
-      <h2>&emsp;•&emsp;AI的感測器融合技術</h2>
-      <h2>&emsp;•&emsp;專業鏡頭設計能力</h2> 
-      <h2>&emsp;•&emsp;小型感測模組的開發與整合</h2> 
-    </section>
+      window.addEventListener('resize', updateSlider);
+      window.addEventListener('DOMContentLoaded', updateSlider);
+    </script>
   </section>
 
   <!-- //////網頁的Lidar優勢呈現////// -->
   <div class="introduce1-text" >
     <h1>全方位3D空間洞察&emsp;精準即時追蹤</h1>
     <h2>利用您首選的LiDAR感測器，即可在任何光照條件下，以前所未有的精度即時追蹤人員與車輛，提供對場域的全面了解，強化營運效率與安防能力</h2>
- </div>
+  </div>
+
   <section class="half-layout">
-    <div class="half-text">
-      <h1>光達技術</h1>
-      <p>我們的LiDAR產品擁有120度寬視角與長距離高解析掃描能力。</p>
-      <a href="#more" class="btn">了解更多</a>
+    <div class="half-text" data-aos="zoom-in-up" data-aos-duration="800">
+      <h1>AI視覺演算法&emsp;打造智慧城市新解方</h1>
+      <h2>將LiDAR結合AI演算法，應用於點雲、影像與文字識別，為交通、工業等場域提供高效、安全的智慧解決方案</h2>
+      <a href="#more" class="half-text-btn">了解更多</a>
     </div>
     <div class="half-video">
-      <video data-aos="fade-up" data-aos-duration="1000" width="80%" height="auto" autoplay muted loop playsinline>
+      <video data-aos="fade-up" data-aos-duration="800" autoplay muted loop playsinline>
         <source src="result_01.mp4" type="video/mp4">
       </video >  
     </div>
   </section>
 
-  <div class="introduce1-text" >
-    <!-- <h1>開啟智能空間&emsp;定義未來感知</h1> -->
-    <!-- <h2>整合全球領先 LiDAR 技術，開創安全、高效、智能的新紀元</h2>
-    <h3>我們匯聚全球領先的光達技術與AI感知能力，打造一套完整革新的3D感知解決方案。從車輛自動駕駛、智慧城市到工業自動化與空間管理，每一項創新，都來自於對精確感知與智能決策的堅持</h3> -->
-  </div>
   <section class="half-layout">
     <div class="half-video">
-      <video data-aos="fade-up" data-aos-duration="1000" width="80%" height="auto" autoplay muted loop playsinline>
+      <video data-aos="fade-up" data-aos-duration="800" autoplay muted loop playsinline>
         <source src="result_02.mp4" type="video/mp4">
       </video >  
     </div>
-    <div class="half-text">
-      <h1>光達技術</h1>
-      <p>我們的LiDAR產品擁有120度寬視角與長距離高解析掃描能力。</p>
-      <a href="#more" class="btn">了解更多</a>
+    <div class="half-text" data-aos="zoom-in-up" data-aos-duration="800">
+      <h1>AI視覺演算法&emsp;打造智慧城市新解方</h1>
+      <h2>將LiDAR結合AI演算法，應用於點雲、影像與文字識別，為交通、工業等場域提供高效、安全的智慧解決方案</h2>
+      <a href="#more" class="half-text-btn">了解更多</a>
     </div>
-
   </section>
 
-  <div class="introduce1-text" >
-    <!-- <h1>開啟智能空間&emsp;定義未來感知</h1> -->
-    <!-- <h2>整合全球領先 LiDAR 技術，開創安全、高效、智能的新紀元</h2>
-    <h3>我們匯聚全球領先的光達技術與AI感知能力，打造一套完整革新的3D感知解決方案。從車輛自動駕駛、智慧城市到工業自動化與空間管理，每一項創新，都來自於對精確感知與智能決策的堅持</h3> -->
-  </div>
   <section class="half-layout">
-    <div class="half-text">
-      <h1>光達技術</h1>
-      <p>我們的LiDAR產品擁有120度寬視角與長距離高解析掃描能力。</p>
-      <a href="#more" class="btn">了解更多</a>
+    <div class="half-text" data-aos="zoom-in-up" data-aos-duration="800">
+      <h1>AI視覺演算法&emsp;打造智慧城市新解方</h1>
+      <h2>將LiDAR結合AI演算法，應用於點雲、影像與文字識別，為交通、工業等場域提供高效、安全的智慧解決方案</h2>
+      <a href="#more" class="half-text-btn">了解更多</a>
     </div>
     <div class="half-video">
-      <video data-aos="fade-up" data-aos-duration="1000" width="80%" height="auto" autoplay muted loop playsinline>
+      <video data-aos="fade-up" data-aos-duration="800" autoplay muted loop playsinline>
         <source src="result_03.mp4" type="video/mp4">
       </video >  
     </div>
   </section>
     
-  <!-- //////網頁的客戶合作成果////// -->
-    <div class="introduce1-text" >
-      <h1>開啟智能空間&emsp;定義未來感知</h1>
-      <h2>整合全球領先 LiDAR 技術，開創安全、高效、智能的新紀元</h2>
-      <h3>我們匯聚全球領先的光達技術與AI感知能力，打造一套完整革新的3D感知解決方案。從車輛自動駕駛、智慧城市到工業自動化與空間管理，每一項創新，都來自於對精確感知與智能決策的堅持</h3>
-    </div>
- <section class="T3-image" data-aos="zoom-in-up" data-aos-duration="600">
-    <div class="slider-container">
-      <button class="image-overlay-btn1" onclick="prevSlide2()"> ‹ </button>
-      <button class="image-overlay-btn2" onclick="nextSlide2()"> › </button>
-      <div class="slider" id="slider2">
-        <div class="slide">
-          <video data-aos="fade-up" data-aos-duration="1000" width="80%" height="auto" autoplay muted loop playsinline>
-            <source src="Customer_01.mp4" type="video/mp4">
-          </video > 
+  <!-- //////網頁的媒體新聞////// -->
+  <div class="introduce1-text" >
+    <h1>媒體新聞</h1>
+    <h2>整合全球領先 LiDAR 技術，開創安全、高效、智能的新紀元</h2>
+  </div>
+
+  <div class="news-slider-container">
+    <div class="news-slider-track" id="news-slider">
+      
+        <div class="news-card">
+          <div class="news-card-background">
+            <a href="https://www.moea.gov.tw/MNS/populace/news/News.aspx?kind=1&menu_id=40&news_id=116748" target="_blank">
+              <img src="網頁素材\News\News_05.jfif" alt="News 1" />
+              <h1>經濟部產業技術司精選64項技術TIE亮相&emsp;攜手來達發表國產首款車用固態光達</h1>
+              <h2>2024-10-17</h2>
+            </a>
+          </div>
         </div>
-        
-            <section class="T3-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="100">
-              <h1>T3 LiDar</h1>
-              <h2>120度高解析長距離光達</h2>
-              <div class="content">
-                <a href="#more-info" class="T3-text-btn">&nbsp;&nbsp;了解更多&nbsp;&nbsp;</a>
-              </div>
-            </section>
-        <div class="slide"><img src="Customer_02.jpg" /></div>
-        <div class="slide"><img src="Customer_03.jpg" /></div>
-        
-      </div>
+
+        <div class="news-card">
+          <div class="news-card-background">
+            <a href="https://money.udn.com/money/story/5612/8298258" target="_blank">
+              <img src="網頁素材\News\News_04.jfif" alt="News 1" />
+              <h1>產學合作開發首款AI固態光達系統&emsp;準確度超越國際&emsp;具備自駕車關鍵實力</h1>
+              <h2>2024-10-17</h2>
+            </a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-background">
+            <a href="https://www.epochtimes.com/b5/22/7/4/n13773276.htm" target="_blank">
+              <img src="網頁素材\News\News_03.jpg" alt="News 1" />
+              <h1>台首創微機電光達&emsp;實現Level3以上自駕技術</h1>
+              <h2>2022-07-04</h2>
+            </a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-background">
+            <a href="https://www.ntdtv.com.tw/b5/20210622/video/297760.html?%E4%BE%86%E9%81%94%E5%BE%AE%E6%A9%9F%E9%9B%BB%E5%85%89%E5%AD%B8%E5%BE%AE%E9%8F%A1%E9%80%B2%E8%BB%8D%E5%B8%82%E5%A0%B4%20%E6%8B%9A%E8%87%AA%E9%A7%95%E3%80%81%E7%84%A1%E4%BA%BA%E6%A9%9F%E7%AD%89%E9%A0%98%E5%9F%9F" target="_blank">
+              <img src="網頁素材\News\News_02.jpg" alt="News 1" />
+              <h1>來達微機電光學微鏡進軍市場&emsp;拚自駕、無人機等領域</h1>
+              <h2>2021-06-22</h2>
+            </a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-background">
+            <a href="https://today.line.me/tw/v2/article/o7y2pj" target="_blank">
+              <img src="網頁素材\News\News_01.jfif" alt="News 1" />
+              <h1>竹科亮點投資突破自駕車發展瓶頸&emsp;來達科技開發微機電光學微鏡</h1>
+              <h2>2020-06-12</h2>
+            </a>
+          </div>
+        </div>
     </div>
-    <script>
-      let currentIndex2 = 0;
-      const slider2 = document.getElementById('slider2'); // ✅ 修正這裡
-      const totalSlides2 = slider2.children.length;
+  </div>
 
-      function updateSlider2() {
-        const offset = -currentIndex2 * (6096 / totalSlides2); // 每張圖寬度
-        slider2.style.transform = `translateX(${offset}px)`;
-        slider2.style.transition = 'transform 0.5s ease'; // ✅ 建議加入動畫效果
-      }
+  <div class="news-slider-controls">
+    <button onclick="news_prevSlide()"> ‹ </button>
+    <button onclick="news_nextSlide()"> › </button>
+  </div>
 
-      function nextSlide2() {
-        if (currentIndex2 < totalSlides2 - 2) { // ✅ 注意：應該是 totalSlides2 - 1
-          currentIndex2++;
-          updateSlider2();
+  <div class="news-dots-container">
+    <span class="news-dot" data-index="0"></span>
+    <span class="news-dot" data-index="1"></span>
+    <span class="news-dot" data-index="2"></span>
+  </div>
+
+  <script>
+    const news_slider = document.getElementById('news-slider');
+    const news_cards = news_slider.children;
+    const news_totalCards = news_cards.length;
+    const news_cardsPerPage = 3;
+    const news_dots = document.querySelectorAll('.news-dot');
+
+    let news_currentIndex = 0;
+
+    news_dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index'), 10);
+        news_currentIndex = index;
+        news_updateSlider();
+        news_updateDots();
+      });
+    });
+
+    function news_updateDots() {
+      news_dots.forEach((dot, i) => {
+        if (i === news_currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
         }
-      }
+      });
+    }
 
-      function prevSlide2() {
-        if (currentIndex2 > 0) {
-          currentIndex2--;
-          updateSlider2();
-        }
-      }
-    </script>
+    function news_updateSlider() {
+      const news_cardWidth = news_cards[0].offsetWidth;
+      news_slider.style.transform = `translateX(-${news_currentIndex * news_cardWidth}px)`;
+      news_updateDots();
+    }
 
+    function news_nextSlide() {
+      if (news_currentIndex < news_totalCards - news_cardsPerPage) {
+        news_currentIndex++;
+          } else {
+      news_currentIndex = 0; // 回到第一張
+    }
+        news_updateSlider();
+        news_updateDots();
+    }
+
+    function news_prevSlide() {
+      if (news_currentIndex > 0) {
+        news_currentIndex--;
+          } else {
+      news_currentIndex = news_totalCards - news_cardsPerPage; // 回到最後一組圖片
+    }
+        news_updateSlider();
+        news_updateDots();
+    }
+
+    window.addEventListener('load', news_updateSlider);
+    window.addEventListener('resize', news_updateSlider);
+  </script>
 
 
 
