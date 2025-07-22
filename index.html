@@ -28,11 +28,13 @@
     .header-container {
       display: flex;
       align-items: center;
-      justify-content: space-evenly; 
+      justify-content: space-between; 
       margin: 0 auto;
     }
     .header-logo {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly; 
       -webkit-tap-highlight-color: transparent;
     }
     .header-img {
@@ -55,7 +57,6 @@
       box-shadow: 0 0 20px rgb(39, 18, 0);
     }
     .header-menu {
-      position: relative;
       list-style: none;
       display: flex;
       margin: 0;
@@ -134,9 +135,6 @@
     .header-item-image:hover .header-hover-image {
       display: block;
     }
-    .header-menu a {
-      font-size: 1.2vw;
-    }
     .lang-toggle {
       position: relative;
       width: 100px;
@@ -147,6 +145,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0;
+      margin: 0 3vw;
       font-family: sans-serif;
       cursor: pointer;
       user-select: none;
@@ -171,6 +170,59 @@
     }
     .lang-toggle.active .toggle-btn {
       transform: translateX(100%);
+    }
+
+/* //////網頁開場影片及文字動畫////// */
+    .video-background {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .background-video {
+      position: absolute;
+      top: -50%;
+      left: 0;
+      width: 100%;
+      height: 220%;
+      opacity: 0.3;
+      z-index: -2;
+    }
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
+    .video-text {
+      position: relative; 
+      text-align: center;
+      color: white;
+      top: 35%;
+    }
+    .video-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: videotext 1s ease-out forwards;
+    }
+    .video-text h2 {
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: videotext 1s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+    @keyframes videotext {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
 /* //////網頁開場影片及文字動畫////// */
@@ -713,7 +765,6 @@
             <a href="Aboutus.html">關於我們</a>
             <a href="Contactus.html">聯絡我們</a>
             <a href="Joinus.html">加入來達</a>
-            <a href="Investors.html">投資者關係</a>
         </ul>
       </nav>
       <div id="langSwitcher" class="lang-toggle">
