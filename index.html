@@ -134,6 +134,9 @@
     .header-item-image:hover .header-hover-image {
       display: block;
     }
+    .header-menu a {
+      font-size: 1.2vw;
+    }
     .lang-toggle {
       position: relative;
       width: 100px;
@@ -579,45 +582,76 @@
       height: 15px;
     }
 
-
-    /* button {
-      padding: 6px 12px;
-      cursor: pointer;
-    } */
-
-
-
-
-
     /* //////網頁底部的目錄////// */
     footer {
-      background: #222;
-      color: #aaa;
-      text-align: left;
-      padding: 2rem;
-      font-size: 0.8rem;
-      margin-top: 100px;
+      position: relative;
+      background: linear-gradient(to right, #2b4d57, #837762);
+      padding: 20vh 5vw;
+      margin-top: 30vh;
     }
-    footer p {
-      margin-left: 300px;
-    }
-    .footer-container {
+    .footer-menu {
+      position: absolute;
+      top: 15%;
+      left: 0%;
+      width: 100%;
+      height: auto;
       display: flex;
       align-items: center;
-      justify-content: center; 
-      max-width: 1200px;
-      margin: 0 auto;
+      justify-content: center;
     }
     .footer-links a {
-      color: #aaa;
+      color: #ffffff;
       text-decoration: none;
-      padding: 0rem 0.3rem;
-      font-size: 0.8rem;
-      margin-left: 0px;
+      font-size: 1.2vw;
+      font-weight: 700;
+      padding: 0 1vw;
+      position: relative;
     }
-
-
-
+    .footer-vertical-line {
+      background-color: #bcbcbc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0%;
+      left: 96%;
+      width: 2%;
+      height: 100%;
+      z-index: 20;
+    }
+    .footer-horizontal-line {
+      background-color: #bcbcbc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 30%;
+      width: 80%;
+      height: 1%;
+      left: 10%
+    }
+    .footer-container {
+      margin-top: 5%;
+      margin-left: 10%;
+      font-weight: 200;
+      color: #ffffff;
+    }
+    .footer-copyright {
+      position: absolute;
+      top: 85%;
+      left: 67%;
+      font-size: 0.4vw;
+      color: #959595;
+    }
+    .footer-logo {
+     position: absolute;
+     top: 40%;
+     left: 80%; 
+    }
+    .footer-img {
+      width: 70%;
+      height: auto;
+    }
 
 
 
@@ -1005,22 +1039,36 @@
 
   <!-- //////網頁底部的目錄////// -->
   <footer id="contact">
-    <div class="footer-container">
+    <div class="footer-menu">
       <nav class="footer-links">
-        <a href="#products">光達產品</a><a>│</a>
-        <a href="#about">關於我們</a><a>│</a>
-        <a href="#contact">聯絡我們</a><a>│</a>
-        <a href="#contact">加入來達</a><a>│</a>
+        <a href="#products">光達產品
+        <div class="footer-vertical-line"></div></a>
+        <a href="#about">關於我們
+        <div class="footer-vertical-line"></div></a>
+        <a href="#contact">聯絡我們
+        <div class="footer-vertical-line"></div></a>
+        <a href="#contact">加入來達
+        <div class="footer-vertical-line"></div></a>
         <a href="#contact">投資者關係</a>
       </nav>
     </div>
+    <div class="footer-horizontal-line"></div>
     <div class="footer-container">
-      <a>_______________________________________________________________________________________________</a>
+      <p>電子郵件：<a href="mailto:sales@example.com" style="color:#dadeaa;">sales@compertum.com</a></p>
+      <p>地址: 300094 新竹市東區力行一路一號1A2-A07</p>
+      <p>電話: +(886)-03-5771500</p>
+      <p>傳真: +(886)-03-5771600</p>
     </div>
-    <p>聯絡我們：<a href="mailto:sales@example.com" style="color:#aaa;">sales@compertum.com</a> ｜ © Compertum</p>
-    <p>地址: 300094 新竹市東區力行一路一號1A2-A07</p>
-    <p>電話: 03-5771500</p>
-    <p>傳真: 03-5771600</p>
+    <div class="footer-logo">
+      <a href="Compertum.html" class="footer-img">
+        <img src="LOGO.png" alt="Compertum Microsystems Logo" class="footer-img">
+      </a>
+    </div>
+    <div class="footer-copyright">
+      <h1>Copyright © Compertum Microsystems Inc.All Rights Reserved.</h1>
+    </div>
+
+
 
   </footer>
 
